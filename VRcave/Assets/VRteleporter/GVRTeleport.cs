@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.EventSystems;
 
 //A simple script that allows a game object to teleport to a location based on raycast hit. Not complete.
 
@@ -58,34 +59,40 @@ public class GVRTeleport : MonoBehaviour {
 
 		if(Input.GetMouseButton(0)){
 			if(Physics.Raycast(ray, out hit)){
-				//teleLoc = hit.point;
-				//targetIndicator.transform.position = new Vector3(hit.point.x, targetIndicator.transform.position.y, hit.point.z);
-				if(useViewHeight){
-					targetIndicator.transform.position = new Vector3(hit.point.x, hit.point.y + viewHeight, hit.point.z);
-				}else{
-					targetIndicator.transform.position = new Vector3(hit.point.x, hit.point.y, hit.point.z);
+				if(hit.transform.gameObject.GetComponent<EventTrigger>() == null){ //if pointer is on object without event triggers
+					//teleLoc = hit.point;
+					//targetIndicator.transform.position = new Vector3(hit.point.x, targetIndicator.transform.position.y, hit.point.z);
+					if(useViewHeight){
+						targetIndicator.transform.position = new Vector3(hit.point.x, hit.point.y + viewHeight, hit.point.z);
+					}else{
+						targetIndicator.transform.position = new Vector3(hit.point.x, hit.point.y, hit.point.z);
+					}
+					targetIndicator.transform.LookAt(hit.point);
+					targetIndicator.GetComponent<Light>().intensity = 8;
+
+					//line.SetVertexCount(50);
+					//genLineSin(new Vector3(ray.origin.x+2,ray.origin.y,ray.origin.z) /*- new Vector3(0, .5f, 0)*/, hit.point);
+				
+					genLine.genLine(new Vector3(ray.origin.x + 2, ray.origin.y-.5f, ray.origin.z), hit.point);
+
+					line.material.SetTextureOffset("_MainTex", new Vector2(Time.timeSinceLevelLoad * -4f, 0f));
+					line.material.SetTextureScale("_MainTex", new Vector2(hit.point.magnitude, 1f));
 				}
-				targetIndicator.transform.LookAt(hit.point);
-				targetIndicator.GetComponent<Light>().intensity = 8;
-
-				//line.SetVertexCount(50);
-				//genLineSin(new Vector3(ray.origin.x+2,ray.origin.y,ray.origin.z) /*- new Vector3(0, .5f, 0)*/, hit.point);
-				genLine.genLine(new Vector3(ray.origin.x + 2, ray.origin.y-.5f, ray.origin.z), hit.point);
-
-				line.material.SetTextureOffset("_MainTex", new Vector2(Time.timeSinceLevelLoad * -4f, 0f));
-				line.material.SetTextureScale("_MainTex", new Vector2(hit.point.magnitude, 1f));
 			}
 		}
 
-		if(Input.GetMouseButtonUp(0)){
+		if(Input.GetMouseButtonUp(0)){	
 			if(Physics.Raycast(ray, out hit)){
 				//if(!debugNoJump){
+				if(hit.transform.gameObject.GetComponent<EventTrigger>() == null){ //if pointer is on object without event triggers
 					if(useViewHeight){
 						parent.transform.position = new Vector3(hit.point.x, hit.point.y + viewHeight, hit.point.z);
 					}else{
 						parent.transform.position = new Vector3(hit.point.x, hit.point.y, hit.point.z);
 					}
+				}
 				//}
+				
 				//if(!debugLine){
 					line.SetVertexCount(0);
 				//}
