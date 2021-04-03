@@ -10,5 +10,4 @@ public class ScoreSystem : MonoBehaviour{
     void Update(){
         scoreText.GetComponent<Text>().text = "Score: "+score+" / 5";
     }
-
 }
