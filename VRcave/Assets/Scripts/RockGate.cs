@@ -11,7 +11,7 @@ public class RockGate : MonoBehaviour{
     public void GateBreak(){
         if(ScoreSystem.score == 5){
             rockBreakAudio.Play();
-            DesSystem.description = "Road is now clear.";
+            DesSystem.description = "Road is now clear";
             StartCoroutine(WaitTime());
         }else{
             DesSystem.description = "Road is blocked. Find more Mushrooms.";

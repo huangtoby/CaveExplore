@@ -4,13 +4,13 @@ using UnityEngine;
 
 public class StartInstructions : MonoBehaviour{
     public void StartDescription(){
-        DesSystem.description = "Discover and Collect";
+        DesSystem.description = "DISCOVER and COLLECT";
         StartCoroutine(WaitTimeA());
     }
 
     public IEnumerator WaitTimeA(){
         yield return new WaitForSeconds(5f);
-        DesSystem.description = "Mushrooms are key";
+        DesSystem.description = "Mushrooms are key.";
         StartCoroutine(WaitTimeB());
     }
 
