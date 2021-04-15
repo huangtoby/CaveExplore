@@ -9,7 +9,7 @@ public class ChestInteract : MonoBehaviour{
     public AudioSource chestAudio;
     
     public void ChestOpen(){
-        if(chestCap.GetComponent<Animation>().clip == open){
+        if(chestCap.GetComponent<Animation>().clip == open && ScoreSystem.score == 5){
             chestAudio.Play();
             chestCap.GetComponent<Animation>().Play();
             chestCap.GetComponent<Animation>().clip = close;

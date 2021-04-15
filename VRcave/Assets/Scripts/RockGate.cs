@@ -27,6 +27,7 @@ public class RockGate : MonoBehaviour{
             GameObject fracObject = Instantiate (fracturedObject) as GameObject;
             fracObject.GetComponent<ExplodeRock>().Explode();
             DesSystem.description = "";
+            ScoreSystem.score = 0;
         }else{
             DesSystem.description = "";
         }
