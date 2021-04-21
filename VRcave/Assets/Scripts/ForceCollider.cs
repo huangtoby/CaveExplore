@@ -8,5 +8,12 @@ public class ForceCollider : MonoBehaviour{
     
     void OnTriggerEnter(Collider col){
         collideSound.Play();
+        DesSystem.description = "Find the key";
+        StartCoroutine(WaitTime());
+    }
+
+    public IEnumerator WaitTime(){
+        yield return new WaitForSeconds(3f);
+        DesSystem.description = "";
     }
 }

@@ -11,5 +11,12 @@ public class CollectKey : MonoBehaviour{
         Destroy(originalObject);
         handObject.SetActive(true);
         forceField.SetActive(false);
+        DesSystem.description = "The barrier is down";
+        StartCoroutine(WaitTime());
+    }
+
+    public IEnumerator WaitTime(){
+        yield return new WaitForSeconds(3f);
+        DesSystem.description = "";
     }
 }
