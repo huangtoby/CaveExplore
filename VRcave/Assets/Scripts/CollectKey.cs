@@ -8,15 +8,8 @@ public class CollectKey : MonoBehaviour{
     public GameObject forceField;
 
     public void PointerClick(){
+        forceField.SetActive(false);
         Destroy(originalObject);
         handObject.SetActive(true);
-        forceField.SetActive(false);
-        DesSystem.description = "The barrier is down";
-        StartCoroutine(WaitTime());
-    }
-
-    public IEnumerator WaitTime(){
-        yield return new WaitForSeconds(3f);
-        DesSystem.description = "";
     }
 }
