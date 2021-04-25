@@ -7,14 +7,12 @@ public class KeyActive : MonoBehaviour{
 
     void Awake(){
         forceAudio.Play();
-        Debug.Log(forceAudio);
         DesSystem.description = "The barrier is down";
         StartCoroutine(WaitTime());
     }
 
     public IEnumerator WaitTime(){
-        yield return new WaitForSeconds(3f);
+        yield return new WaitForSeconds(5f);
         DesSystem.description = "";
-        Debug.Log("Coroutine Hit");
     }
 }
