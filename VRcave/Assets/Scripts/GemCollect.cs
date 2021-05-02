@@ -6,6 +6,7 @@ public class GemCollect : MonoBehaviour{
     public AudioSource collectAudio;
     public AudioClip gemSound;
     public GameObject spawnShroom1, spawnShroom2, spawnShroom3, spawnShroom4,spawnShroom5;
+    public AudioSource growAudio;
 
     public void PointerClick(){
         collectAudio.GetComponent<AudioSource>().clip = gemSound;
@@ -14,11 +15,12 @@ public class GemCollect : MonoBehaviour{
         Destroy(gameObject);
 
         if(ScoreSystem.score == 5){
-            spawnShroom1.SetActive(true);
-            spawnShroom2.SetActive(true);
-            spawnShroom3.SetActive(true);
-            spawnShroom4.SetActive(true);
-            spawnShroom5.SetActive(true);
+            growAudio.Play();
+            spawnShroom1.GetComponent<Animation>().Play();
+            spawnShroom2.GetComponent<Animation>().Play();
+            spawnShroom3.GetComponent<Animation>().Play();
+            spawnShroom4.GetComponent<Animation>().Play();
+            spawnShroom5.GetComponent<Animation>().Play();
         }
     }
 }
