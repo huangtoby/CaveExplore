@@ -11,6 +11,7 @@ public class AutoMovement : MonoBehaviour
     public float upperBoundsH = 30.0f; //Angle border, can play around with this further to adjust it to your scene
     public float lowerBoundsH = 10.0f;
     public bool moveForward; //boolean to determine whether to move forward or not
+    public AudioSource walkingAudio;
 
     private CharacterController cc;
 
@@ -34,6 +35,11 @@ public class AutoMovement : MonoBehaviour
         //Code that actually moves the player/Camera forward
         if(moveForward)
         {
+            if(walkingAudio.isPlaying == false){
+                walkingAudio.volume = Random.Range(0.1f,0.2f);
+                walkingAudio.pitch = Random.Range(0.8f,1.1f);
+                walkingAudio.Play();
+            }
             Vector3 forward = vrCamera.TransformDirection(Vector3.forward);
             cc.SimpleMove(forward * speed_);
         }
