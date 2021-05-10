@@ -36,8 +36,8 @@ public class AutoMovement : MonoBehaviour
         if(moveForward)
         {
             if(walkingAudio.isPlaying == false){
-                walkingAudio.volume = Random.Range(0.1f,0.2f);
-                walkingAudio.pitch = Random.Range(0.8f,1.1f);
+                walkingAudio.volume = Random.Range(0.1f,0.2f); 
+                walkingAudio.pitch = Random.Range(0.8f,1.1f); 
                 walkingAudio.Play();
             }
             Vector3 forward = vrCamera.TransformDirection(Vector3.forward);
