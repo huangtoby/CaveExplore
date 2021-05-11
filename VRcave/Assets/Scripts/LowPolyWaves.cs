@@ -1,8 +1,8 @@
 ﻿using UnityEngine;
 
-namespace LowPolyWater
+namespace LowPolyWaves
 {
-    public class LowPolyWater : MonoBehaviour
+    public class LowPolyWaves : MonoBehaviour
     {
         public float waveHeight = 0.5f;
         public float waveFrequency = 0.5f;
