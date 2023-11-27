@@ -1,5 +1,5 @@
 # CaveExplore
-DEMO:
+Video DEMO:
 </br>
 [![Cave Explore Demo](https://i.ytimg.com/vi/EiZyLSRulqM/hqdefault.jpg)](https://www.youtube.com/embed/EiZyLSRulqM)
 </br>
